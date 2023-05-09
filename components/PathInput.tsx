@@ -8,11 +8,10 @@ export default function PathInput({ path, updatePaths, baseUrl }) {
 
   const fetchPath = async (path) => {
     setChecking(true)
-    console.log("fetching path", path.value)
 
     const response = await fetch("/api/fetchLink", {
       method: "POST",
-      body: JSON.stringify({ url: `${baseUrl}${path.value}` })
+      body: JSON.stringify({ url: `${baseUrl.origin}${path.value}` })
     },)
 
 
@@ -25,14 +24,13 @@ export default function PathInput({ path, updatePaths, baseUrl }) {
     }
 
     setChecking(false)
-    console.log(response)
     return response
   }
 
   return (
     <div className="flex items-center  mt-4 gap-2">
       <div className="text-gray-400 font-light text-sm">
-        {baseUrl}
+        {baseUrl.origin}
       </div>
       <div className="flex gap-2">
         <div className="relative">
