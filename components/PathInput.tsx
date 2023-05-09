@@ -11,7 +11,7 @@ export default function PathInput({ path, baseUrl }) {
 
     const response = await fetch("/api/fetchLink", {
       method: "POST",
-      body: JSON.stringify({ url: `${baseUrl.origin}${path.value}` })
+      body: JSON.stringify({ url: `${baseUrl}${path.value}` })
     },)
 
 
@@ -30,7 +30,7 @@ export default function PathInput({ path, baseUrl }) {
   return (
     <div className="flex items-center  mt-4 gap-2">
       <div className="text-gray-400 font-light text-sm">
-        {baseUrl.origin}
+        {baseUrl}
       </div>
       <div className="flex gap-2">
         <div className="relative">
