@@ -11,7 +11,7 @@ interface Link {
 export default function CheckLinks() {
   const [links, setLinks] = useState([{
     id: "url-1",
-    value: "",
+    value: "https://dressedco.de",
     status: "unchecked",
   }])
 
@@ -26,7 +26,7 @@ export default function CheckLinks() {
 
   return (
     <>
-      <h1>Check Links</h1>
+      <h1 className='text-3xl font-extrabold'>Check Links</h1>
       {/* <div>{JSON.stringify(links)}</div> */}
       {
         links.map((link) =>

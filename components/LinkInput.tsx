@@ -31,17 +31,21 @@ export default function LinkInput({ link, updateLinks }) {
 
   return (
     <>
-      <p>{JSON.stringify(currentLink)}</p>
-      <input type='url' value={currentLink.value} onChange={(e) => setCurrentLink({ id: currentLink.id, value: e.currentTarget.value })} />
-      {/* <button onClick={() => {
-        updateLinks(currentLink)
-      }}>+</button> */}
-      <p>
-        <button onClick={() => fetchLink(currentLink)}>Check</button>
-      </p>
-      {checking && <FiCoffee />}
-      {currentLink.status === "success" && <FiCheck />}
-      {currentLink.status === "error" && <FiX />}
+      <div className="flex flex-col gap-2 mt-10">
+        <p>{JSON.stringify(currentLink)}</p>
+        <div className="relative">
+          <input type='url' className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={currentLink.value} onChange={(e) => setCurrentLink({ id: currentLink.id, value: e.currentTarget.value })} />
+          {/* <button onClick={() => {
+          
+        }}>+</button> */}
+          <div className="absolute right-3 top-3">
+            {checking && <FiCoffee />}
+            {!checking && currentLink.status === "success" && <FiCheck />}
+            {!checking && currentLink.status === "error" && <FiX color="red" />}
+          </div>
+        </div>
+        <button className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={() => fetchLink(currentLink)}>Check</button>
+      </div>
     </>
   )
 }
