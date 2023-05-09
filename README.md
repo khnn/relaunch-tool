@@ -19,4 +19,5 @@ pnpm dev
 - Loading Indicator while parsing XML
 - display and interprete exact error code
 - Compare with other base url
+- TLD
 
