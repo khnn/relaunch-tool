@@ -1,9 +1,9 @@
-import CheckLinks from '../components/CheckLinks'
+import CheckLinks from "../components/CheckLinks"
 
 export default function Home() {
   return (
-    <main className="flex-inline min-h-screen flex-col items-center justify-between p-24">
+    <main className="min-h-screen p-24">
       <CheckLinks />
-    </main >
+    </main>
   )
 }
