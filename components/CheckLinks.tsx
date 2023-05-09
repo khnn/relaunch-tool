@@ -1,17 +1,37 @@
 "use client"
 import * as Form from '@radix-ui/react-form';
+import { useState } from "react"
+import LinkInput from './LinkInput';
 
-const fetchLink = async (url: string) => {
-  const response = await fetch('/api/fetchLink', {
-    method: "POST",
-    body: JSON.stringify({ url: url })
-  },)
-
-  console.log(response)
+interface Link {
+  id: string,
+  value: string,
 }
 
 export default function CheckLinks() {
+  const [links, setLinks] = useState([{
+    id: "url-1",
+    value: "",
+    status: "unchecked",
+  }])
+
+  const updateLinks = (newLink: Link) => {
+    setLinks(links.map((link) => {
+      if (link.id === newLink.id) {
+        return { ...link, value: newLink.value }
+      }
+      return link
+    }))
+  }
+
   return (
-    <button onClick={() => fetchLink("https://dressedco.de")}>Add to Cart</button>
+    <>
+      <h1>Check Links</h1>
+      {/* <div>{JSON.stringify(links)}</div> */}
+      {
+        links.map((link) =>
+          <LinkInput key={link.id} link={link} updateLinks={updateLinks} />
+        )}
+    </>
   )
 }
