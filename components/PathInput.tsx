@@ -1,12 +1,6 @@
 import { useState } from "react"
 import { FiCheck, FiX, FiCoffee } from 'react-icons/fi'
 
-interface Path {
-  id: string,
-  value: string,
-  status: "unchecked" | "success" | "error"
-}
-
 export default function PathInput({ path, baseUrl }: { path: Path, baseUrl: string }) {
   { JSON.stringify(path) }
   const [currentPath, setCurrentPath] = useState(path)

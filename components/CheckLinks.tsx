@@ -3,11 +3,10 @@ import * as Form from '@radix-ui/react-form';
 import { useState } from "react"
 import PathInput from './PathInput';
 
-
 export default function CheckLinks() {
   const [baseUrl, setBaseUrl] = useState("")
   const [siteMapUrl, setSiteMapUrl] = useState("")
-  const [paths, setPaths] = useState([{
+  const [paths, setPaths] = useState<Path[]>([{
     id: "url-1",
     value: "/",
     status: "unchecked",
