@@ -15,8 +15,8 @@ pnpm dev
 # TODO
 
 - Linting
-- Check all links
 - remove Link
-- base url validation
+
+- Check all links
 - display exact error code
 - Compare with other base url
