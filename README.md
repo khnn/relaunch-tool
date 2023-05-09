@@ -17,6 +17,5 @@ pnpm dev
 - Linting
 - Check all links
 - XML Parser
-- Add more than 1 Link
 - Enter base Url + Paths
 - Compare with other base url
