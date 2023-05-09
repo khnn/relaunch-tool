@@ -16,5 +16,8 @@ pnpm dev
 
 - Linting
 - Check all links
+- remove Link
+- base url validation
+- display exact error code
 - XML Parser
 - Compare with other base url
