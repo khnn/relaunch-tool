@@ -39,7 +39,7 @@ export default function PathInput({ path, updatePaths, baseUrl }) {
               fetchPath(currentPath)
             }
           }} />
-          <div className="absolute right-3 top-3">
+          <div className="absolute right-2.5 top-2.5 p-0.5 bg-white bg-opacity-80 border border-gray-200 rounded-md">
             {checking && <FiCoffee className="animate-bounce" />}
             {!checking && currentPath.status === "success" && <FiCheck />}
             {!checking && currentPath.status === "error" && <FiX color="red" />}
