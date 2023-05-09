@@ -17,7 +17,5 @@ pnpm dev
 - Linting
 - Option to remove link
 - Loading Indicator while parsing XML
-
-- Check all links
 - display exact error code
 - Compare with other base url
