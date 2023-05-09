@@ -15,7 +15,8 @@ pnpm dev
 # TODO
 
 - Linting
-- remove Link
+- Option to remove link
+- Loading Indicator while parsing XML
 
 - Check all links
 - display exact error code
