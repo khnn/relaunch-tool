@@ -11,7 +11,7 @@ interface Path {
 
 export default function CheckLinks() {
   const [baseUrl, setBaseUrl] = useState(new URL("https://dressedco.de"))
-  const [siteMapUrl, setSiteMapUrl] = useState(new URL("http://localhost:3000/sitemap.xml"))
+  const [siteMapUrl, setSiteMapUrl] = useState(new URL(""))
   const [paths, setPaths] = useState([{
     id: "url-1",
     value: "/",
