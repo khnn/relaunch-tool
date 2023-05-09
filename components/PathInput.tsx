@@ -1,12 +1,18 @@
 import { useState } from "react"
 import { FiCheck, FiX, FiCoffee } from 'react-icons/fi'
 
-export default function PathInput({ path, baseUrl }) {
+interface Path {
+  id: string,
+  value: string,
+  status: "unchecked" | "success" | "error"
+}
+
+export default function PathInput({ path, baseUrl }: { path: Path, baseUrl: string }) {
   { JSON.stringify(path) }
   const [currentPath, setCurrentPath] = useState(path)
   const [checking, setChecking] = useState(false)
 
-  const fetchPath = async (path) => {
+  const fetchPath = async (path: Path) => {
     setChecking(true)
 
     const response = await fetch("/api/fetchLink", {
@@ -34,7 +40,7 @@ export default function PathInput({ path, baseUrl }) {
       </div>
       <div className="flex gap-2">
         <div className="relative">
-          <input type='url' className="block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={currentPath.value} onChange={(e) => setCurrentPath({ id: currentPath.id, value: e.currentTarget.value })} onKeyDown={(e) => {
+          <input type='url' className="block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={currentPath.value} onChange={(e) => setCurrentPath({ ...currentPath, value: e.currentTarget.value })} onKeyDown={(e) => {
             if (e.key === "Enter") {
               fetchPath(currentPath)
             }
