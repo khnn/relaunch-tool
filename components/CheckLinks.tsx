@@ -35,9 +35,6 @@ export default function CheckLinks() {
 
     const data = await response.json()
 
-    if (data.message === "error") {
-    }
-
     if (data.message === "success") {
       setPaths(
         data.routes.map((route: string) => {
