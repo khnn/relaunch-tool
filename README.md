@@ -14,9 +14,10 @@ pnpm dev
 
 # TODO
 
-- Option to remove link
 - Loading Indicator while parsing XML
+- Check child XML files
 - display and interprete exact error code
-- Compare with other base url
+
 - TLD
+- Save Infos (account, local storage or cookie)
 
