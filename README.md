@@ -14,7 +14,6 @@ pnpm dev
 
 # TODO
 
-- Loading Indicator while parsing XML
 - Check child XML files
 - display and interprete exact error code
 
