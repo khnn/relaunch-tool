@@ -1,12 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import { FiLoader } from "react-icons/fi"
 
 import PathInput from "./PathInput"
 
 export default function CheckLinks() {
   const [baseUrl, setBaseUrl] = useState("")
   const [siteMapUrl, setSiteMapUrl] = useState("")
+  const [siteMapChecking, setSiteMapChecking] = useState(false)
   const [allChecking, setAllChecking] = useState(false)
   const [paths, setPaths] = useState<Path[]>([
     {
@@ -28,6 +30,7 @@ export default function CheckLinks() {
   }
 
   const handleXMLParsing = async (url: string) => {
+    setSiteMapChecking(true)
     const response = await fetch("/api/fetchSitemap", {
       method: "POST",
       body: JSON.stringify({ url: new URL(url) }),
@@ -48,6 +51,9 @@ export default function CheckLinks() {
 
       setBaseUrl(new URL(data.routes[0]).origin)
     }
+
+    setSiteMapChecking(false)
+    return data
   }
 
   const checkPaths = async () => {
@@ -110,7 +116,11 @@ export default function CheckLinks() {
           disabled={!siteMapUrl}
           onClick={() => handleXMLParsing(siteMapUrl)}
         >
-          Parse XML
+          {siteMapChecking ? (
+            <FiLoader className="animate-spin" />
+          ) : (
+            "Parse XML"
+          )}
         </button>
       </div>
       <hr />
@@ -146,7 +156,7 @@ export default function CheckLinks() {
         className="mt-4 block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={checkPaths}
       >
-        Check all
+        {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
       </button>
     </>
   )
