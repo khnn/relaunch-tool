@@ -16,6 +16,7 @@ pnpm dev
 
 - Check child XML files
 - display and interprete exact error code
+- validate Base URL + Sitemap URL
 
 - TLD
 - Save Infos (account, local storage or cookie)
