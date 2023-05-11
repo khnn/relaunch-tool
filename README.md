@@ -14,9 +14,14 @@ pnpm dev
 
 # TODO
 
+## Functionality
 - display and interprete exact error code
 - validate Base URL + Sitemap URL
 
+## New parts
+- Checklists with practical tools
+
+## Ideas
 - Check child XML files
 - Caching
 - TLD
