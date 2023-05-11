@@ -14,11 +14,11 @@ pnpm dev
 
 # TODO
 
-- Check child XML files
 - display and interprete exact error code
 - validate Base URL + Sitemap URL
-- Caching
 
+- Check child XML files
+- Caching
 - TLD
 - Save Infos (account, local storage or cookie)
 
