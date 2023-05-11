@@ -10,16 +10,16 @@ yarn dev
 pnpm dev
 ```
 
-# TODO
+## TODO
 
-## Functionality
+### Functionality
 - display and interprete exact error code
 - validate Base URL + Sitemap URL
 
-## New parts
+### New parts
 - Checklists with practical tools
 
-## Ideas
+### Ideas
 - Check child XML files
 - Caching
 - TLD
