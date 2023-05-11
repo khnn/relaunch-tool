@@ -2,19 +2,26 @@
 
 import { NextResponse } from "next/server"
 
+const fetchXMLURL = (url: string) =>
+  fetch(url)
+    .then((res) => res.text())
+    .then((xml) =>
+      xml
+        .split("\n")
+        .filter((line) => line.includes("<loc>"))
+        .map((line) =>
+          line.replace("<loc>", "").replace("</loc>", "").replace(/\t\t/g, "")
+        )
+    )
+
 export async function POST(request: Request) {
   const data = await request.json()
   const requestUrl = data.url
 
   try {
-    const response = await fetch(requestUrl)
-    const xml = await response.text()
-    const filteredOutput = await xml
-      .split("\n")
-      .filter((line) => line.includes("<loc>"))
-      .map((line) => line.replace("<loc>", "").replace("</loc>", ""))
+    const output = await fetchXMLURL(requestUrl)
 
-    return NextResponse.json({ routes: filteredOutput, message: "success" })
+    return NextResponse.json({ routes: output, message: "success" })
   } catch (error) {
     return NextResponse.json({ routes: [], message: "error" })
   }
