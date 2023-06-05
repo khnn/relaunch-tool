@@ -3,6 +3,8 @@
 import { useState } from "react"
 import { FiLoader } from "react-icons/fi"
 
+import { Button } from "@/components/ui/button"
+
 import PathInput from "./PathInput"
 
 export default function CheckLinks() {
@@ -113,8 +115,7 @@ export default function CheckLinks() {
             onChange={(e) => setSiteMapUrl(e.currentTarget.value)}
           />
         </label>
-        <button
-          type="button"
+        <Button
           className="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-200"
           disabled={!siteMapUrl || siteMapUrl.includes("https://") === false}
           onClick={() => handleXMLParsing(siteMapUrl)}
@@ -124,7 +125,7 @@ export default function CheckLinks() {
           ) : (
             "Parse XML"
           )}
-        </button>
+        </Button>
       </div>
       <hr />
       <label htmlFor="baseUrl" className="mt-4 flex flex-col items-start gap-2">
@@ -148,20 +149,18 @@ export default function CheckLinks() {
           updatePaths={updatePaths}
         />
       ))}
-      <button
-        type="button"
+      <Button
         className="mt-4 block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={addPath}
       >
         Add Path
-      </button>
-      <button
-        type="button"
+      </Button>
+      <Button
         className="mt-4 block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         onClick={checkPaths}
       >
         {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
-      </button>
+      </Button>
     </>
   )
 }
