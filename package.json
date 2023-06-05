@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@radix-ui/react-form": "^0.0.2",
+    "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@types/node": "20.1.1",
