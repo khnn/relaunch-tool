@@ -106,9 +106,9 @@ export default function CheckLinks() {
       <h1 className="mb-4 text-3xl font-extrabold">Path checker</h1>
       <Tabs defaultValue="sitemap" className="w-[400px]">
         <TabsList className="mb-4">
-          <TabsTrigger value="sitemap">1. Sitemap URL</TabsTrigger>
-          <TabsTrigger value="base-url">2. Base URL</TabsTrigger>
-          <TabsTrigger value="paths">3. Paths</TabsTrigger>
+          <TabsTrigger value="sitemap">1. Check Sitemap</TabsTrigger>
+          <TabsTrigger value="base-url">2. Enter base URL</TabsTrigger>
+          <TabsTrigger value="paths">3. Paths ({paths.length})</TabsTrigger>
         </TabsList>
         <TabsContent value="sitemap">
           <label htmlFor="siteMapUrl">
@@ -139,7 +139,10 @@ export default function CheckLinks() {
             htmlFor="baseUrl"
             className="mt-4 flex flex-col items-start gap-2"
           >
-            <span className="text-sm">Base URL</span>
+            <span className="text-sm">
+              Enter your new base URL to check whether all your current paths
+              exist at the new location.
+            </span>
             <input
               type="url"
               id="baseUrl"
