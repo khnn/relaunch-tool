@@ -116,7 +116,6 @@ export default function CheckLinks() {
           />
         </label>
         <Button
-          className="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-200"
           disabled={!siteMapUrl || siteMapUrl.includes("https://") === false}
           onClick={() => handleXMLParsing(siteMapUrl)}
         >
@@ -149,16 +148,10 @@ export default function CheckLinks() {
           updatePaths={updatePaths}
         />
       ))}
-      <Button
-        className="mt-4 block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        onClick={addPath}
-      >
+      <Button className="mt-4 block" onClick={addPath}>
         Add Path
       </Button>
-      <Button
-        className="mt-4 block rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        onClick={checkPaths}
-      >
+      <Button className="mt-4 block" onClick={checkPaths}>
         {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
       </Button>
     </>
