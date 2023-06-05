@@ -55,61 +55,63 @@ export default function Questionnaire() {
 
   return (
     <>
-      <Progress className="mb-8" value={currentProgress()} />
       <h1 className="mb-8 text-4xl font-bold">Questionnaire</h1>
       <p className="mb-8 text-gray-500">
         This questionnaire will help us to understand your needs and to provide
         you with the best possible solution. All techsteck will offer you a good
         solution for SEO, ...
       </p>
-      <Tabs defaultValue="kwowledge" className="w-[400px]">
-        <TabsList>
-          <TabsTrigger value="kwowledge">Coding knowledge</TabsTrigger>
-          <TabsTrigger value="content">Content Changes</TabsTrigger>
-          <TabsTrigger value="limitations">Limitations</TabsTrigger>
-        </TabsList>
-        <TabsContent value="kwowledge">
-          <Slider
-            value={answers.codeKnowledge}
-            className="mt-8"
-            onValueChange={(value: [number]) => {
-              setAnswers({ ...answers, codeKnowledge: value })
-            }}
-            min={0}
-            max={4}
-          />
-          {answers.codeKnowledge && (
-            <p className="mt-4 text-sm text-gray-500">
-              {knowledgeMapping[answers.codeKnowledge[0]]}
-            </p>
-          )}
-        </TabsContent>
-        <TabsContent value="content">
-          <Slider
-            value={answers.contentChanges}
-            className="mt-8"
-            onValueChange={(value: [number]) => {
-              setAnswers({ ...answers, contentChanges: value })
-            }}
-            min={0}
-            max={4}
-          />
-          {answers.contentChanges && (
-            <p className="mt-4 text-sm text-gray-500">
-              {contentMapping[answers.contentChanges[0]]}
-            </p>
-          )}
-        </TabsContent>
-        <TabsContent value="limitations">
-          <Textarea
-            onChange={(e) => {
-              setAnswers({ ...answers, limitations: e.target.value })
-            }}
-            value={answers.limitations}
-            placeholder="Any limitations or predefined fixed requirements like hosting."
-          />
-        </TabsContent>
-      </Tabs>
+      <div className="w-96">
+        <Progress className="mb-8" value={currentProgress()} />
+        <Tabs defaultValue="kwowledge" className="">
+          <TabsList>
+            <TabsTrigger value="kwowledge">Coding knowledge</TabsTrigger>
+            <TabsTrigger value="content">Content Changes</TabsTrigger>
+            <TabsTrigger value="limitations">Limitations</TabsTrigger>
+          </TabsList>
+          <TabsContent value="kwowledge">
+            <Slider
+              value={answers.codeKnowledge}
+              className="mt-8"
+              onValueChange={(value: [number]) => {
+                setAnswers({ ...answers, codeKnowledge: value })
+              }}
+              min={0}
+              max={4}
+            />
+            {answers.codeKnowledge && (
+              <p className="mt-4 text-sm text-gray-500">
+                {knowledgeMapping[answers.codeKnowledge[0]]}
+              </p>
+            )}
+          </TabsContent>
+          <TabsContent value="content">
+            <Slider
+              value={answers.contentChanges}
+              className="mt-8"
+              onValueChange={(value: [number]) => {
+                setAnswers({ ...answers, contentChanges: value })
+              }}
+              min={0}
+              max={4}
+            />
+            {answers.contentChanges && (
+              <p className="mt-4 text-sm text-gray-500">
+                {contentMapping[answers.contentChanges[0]]}
+              </p>
+            )}
+          </TabsContent>
+          <TabsContent value="limitations">
+            <Textarea
+              onChange={(e) => {
+                setAnswers({ ...answers, limitations: e.target.value })
+              }}
+              value={answers.limitations}
+              placeholder="Any limitations or predefined fixed requirements like hosting."
+            />
+          </TabsContent>
+        </Tabs>
+      </div>
     </>
   )
 }
