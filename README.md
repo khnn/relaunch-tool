@@ -11,7 +11,11 @@ pnpm dev
 ```
 
 ## TODO
-
+- Techstack finder
+    - How's Code knowledge?
+    - How often does the content change?
+    - How many visits the site will have?
+    - Special security concerns?
 ### Functionality
 - display and interprete exact error code
 - validate Base URL + Sitemap URL
