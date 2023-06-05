@@ -15,6 +15,14 @@ export default function Questionnaire() {
   const currentProgress =
     (answers.codeKnowledge ? 50 : 0) + (answers.contentChanges ? 50 : 0)
 
+  /* TODO
+
+  - DB?
+  - Hosting?
+  - SSR? SPA? SSG?
+
+  */
+
   return (
     <>
       <Progress className="mb-8" value={currentProgress} />
