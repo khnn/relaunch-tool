@@ -5,18 +5,27 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { Slider } from "@/components/ui/slider"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function Questionnaire() {
   const [answers, setAnswers] = useState<{
-    codeKnowledge: [number]
-    contentChanges: [number]
+    codeKnowledge?: [number]
+    contentChanges?: [number]
+    limitations: string
   }>({
-    codeKnowledge: [0],
-    contentChanges: [0],
+    codeKnowledge: undefined,
+    contentChanges: undefined,
+    limitations: "",
   })
 
-  const currentProgress =
-    (answers.codeKnowledge ? 50 : 0) + (answers.contentChanges ? 50 : 0)
+  const currentProgress = () => {
+    const { length } = Object.keys(answers)
+    return (
+      (answers.codeKnowledge ? 100 / length : 0) +
+      (answers.contentChanges ? 100 / length : 0) +
+      (answers.limitations !== "" ? 100 / length : 0)
+    )
+  }
 
   const knowledgeMapping = [
     "I don't know any coding",
@@ -33,24 +42,31 @@ export default function Questionnaire() {
     "A lot of updates, maybe once a day",
     "A lot of updates, maybe multiple times a day",
   ]
+
   /* TODO
 
   - DB?
   - Hosting?
+  - If you can pick one: performance, budget, flexibility, ...
   - SSR? SPA? SSG?
-  - SEO?
-  - Fixed Hosting? Security Concerns?
-  - Labels
+  - Labels & Texts
 
   */
 
   return (
     <>
-      <Progress className="mb-8" value={currentProgress} />
+      <Progress className="mb-8" value={currentProgress()} />
+      <h1 className="mb-8 text-4xl font-bold">Questionnaire</h1>
+      <p className="mb-8 text-gray-500">
+        This questionnaire will help us to understand your needs and to provide
+        you with the best possible solution. All techsteck will offer you a good
+        solution for SEO, ...
+      </p>
       <Tabs defaultValue="kwowledge" className="w-[400px]">
         <TabsList>
           <TabsTrigger value="kwowledge">Coding knowledge</TabsTrigger>
           <TabsTrigger value="content">Content Changes</TabsTrigger>
+          <TabsTrigger value="limitations">Limitations</TabsTrigger>
         </TabsList>
         <TabsContent value="kwowledge">
           <Slider
@@ -83,6 +99,15 @@ export default function Questionnaire() {
               {contentMapping[answers.contentChanges[0]]}
             </p>
           )}
+        </TabsContent>
+        <TabsContent value="limitations">
+          <Textarea
+            onChange={(e) => {
+              setAnswers({ ...answers, limitations: e.target.value })
+            }}
+            value={answers.limitations}
+            placeholder="Any limitations or predefined fixed requirements like hosting."
+          />
         </TabsContent>
       </Tabs>
     </>
