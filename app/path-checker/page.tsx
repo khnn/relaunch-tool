@@ -1,4 +1,4 @@
-import CheckLinks from "../components/CheckLinks"
+import CheckLinks from "@/components/CheckLinks"
 
 export default function Home() {
   return (
