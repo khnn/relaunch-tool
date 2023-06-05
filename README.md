@@ -18,6 +18,11 @@ pnpm dev
 - Checklists with practical tools
 
 ### Ideas
+- Redirect Management
+    - Check current paths
+    - Compare with new paths
+    - Connect unused paths to new paths
+    - Export Redirect in various formats: htaccess, next.config.js
 - Check child XML files
 - Caching
 - TLD
