@@ -4,6 +4,7 @@ import { useState } from "react"
 import { FiLoader } from "react-icons/fi"
 
 import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import PathInput from "./PathInput"
 
@@ -102,58 +103,72 @@ export default function CheckLinks() {
 
   return (
     <>
-      <h1 className="text-3xl font-extrabold">Check Paths</h1>
-      <div className="flex items-end gap-2 py-4">
-        <label htmlFor="siteMapUrl">
-          <span className="text-sm">Sitemap URL</span>
-          <input
-            type="url"
-            id="siteMapUrl"
-            placeholder="Sitemap URL"
-            className="mt-2 block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={siteMapUrl}
-            onChange={(e) => setSiteMapUrl(e.currentTarget.value)}
-          />
-        </label>
-        <Button
-          disabled={!siteMapUrl || siteMapUrl.includes("https://") === false}
-          onClick={() => handleXMLParsing(siteMapUrl)}
-        >
-          {siteMapChecking ? (
-            <FiLoader className="animate-spin" />
-          ) : (
-            "Parse XML"
-          )}
-        </Button>
-      </div>
-      <hr />
-      <label htmlFor="baseUrl" className="mt-4 flex flex-col items-start gap-2">
-        <span className="text-sm">Base URL</span>
-        <input
-          type="url"
-          id="baseUrl"
-          placeholder="Base URL"
-          className="block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          value={baseUrl}
-          onChange={(e) => setBaseUrl(e.currentTarget.value)}
-        />
-      </label>
-      {paths.map((path) => (
-        <PathInput
-          key={path.id}
-          path={path}
-          baseUrl={baseUrl}
-          allChecking={allChecking}
-          checkPaths={checkPaths}
-          updatePaths={updatePaths}
-        />
-      ))}
-      <Button className="mt-4 block" onClick={addPath}>
-        Add Path
-      </Button>
-      <Button className="mt-4 block" onClick={checkPaths}>
-        {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
-      </Button>
+      <h1 className="mb-4 text-3xl font-extrabold">Path checker</h1>
+      <Tabs defaultValue="sitemap" className="w-[400px]">
+        <TabsList className="mb-4">
+          <TabsTrigger value="sitemap">1. Sitemap URL</TabsTrigger>
+          <TabsTrigger value="base-url">2. Base URL</TabsTrigger>
+          <TabsTrigger value="paths">3. Paths</TabsTrigger>
+        </TabsList>
+        <TabsContent value="sitemap">
+          <label htmlFor="siteMapUrl">
+            <span className="text-sm">Sitemap URL</span>
+            <input
+              type="url"
+              id="siteMapUrl"
+              placeholder="Sitemap URL"
+              className="mt-2 block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={siteMapUrl}
+              onChange={(e) => setSiteMapUrl(e.currentTarget.value)}
+            />
+          </label>
+          <Button
+            className="mt-4 block"
+            disabled={!siteMapUrl || siteMapUrl.includes("https://") === false}
+            onClick={() => handleXMLParsing(siteMapUrl)}
+          >
+            {siteMapChecking ? (
+              <FiLoader className="animate-spin" />
+            ) : (
+              "Parse XML"
+            )}
+          </Button>
+        </TabsContent>
+        <TabsContent value="base-url">
+          <label
+            htmlFor="baseUrl"
+            className="mt-4 flex flex-col items-start gap-2"
+          >
+            <span className="text-sm">Base URL</span>
+            <input
+              type="url"
+              id="baseUrl"
+              placeholder="Base URL"
+              className="block w-96 rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              value={baseUrl}
+              onChange={(e) => setBaseUrl(e.currentTarget.value)}
+            />
+          </label>
+        </TabsContent>
+        <TabsContent value="paths">
+          {paths.map((path) => (
+            <PathInput
+              key={path.id}
+              path={path}
+              baseUrl={baseUrl}
+              allChecking={allChecking}
+              checkPaths={checkPaths}
+              updatePaths={updatePaths}
+            />
+          ))}
+          <Button className="mt-4 block" onClick={addPath}>
+            Add Path
+          </Button>
+          <Button className="mt-4 block" onClick={checkPaths}>
+            {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
+          </Button>
+        </TabsContent>
+      </Tabs>
     </>
   )
 }
