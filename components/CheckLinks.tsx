@@ -11,6 +11,7 @@ import PathInput from "./PathInput"
 export default function CheckLinks() {
   const [baseUrl, setBaseUrl] = useState("https://")
   const [siteMapUrl, setSiteMapUrl] = useState("https://")
+  const [currentTab, setCurrentTab] = useState("sitemap")
   const [siteMapChecking, setSiteMapChecking] = useState(false)
   const [allChecking, setAllChecking] = useState(false)
   const [paths, setPaths] = useState<Path[]>([
@@ -56,6 +57,7 @@ export default function CheckLinks() {
     }
 
     setSiteMapChecking(false)
+    setCurrentTab("base-url")
     return data
   }
 
@@ -104,11 +106,20 @@ export default function CheckLinks() {
   return (
     <>
       <h1 className="mb-4 text-3xl font-extrabold">Path checker</h1>
-      <Tabs defaultValue="sitemap" className="w-[400px]">
+      <Tabs value={currentTab} className="w-[400px]">
         <TabsList className="mb-4">
-          <TabsTrigger value="sitemap">1. Check Sitemap</TabsTrigger>
-          <TabsTrigger value="base-url">2. Enter base URL</TabsTrigger>
-          <TabsTrigger value="paths">3. Paths ({paths.length})</TabsTrigger>
+          <TabsTrigger value="sitemap" onClick={() => setCurrentTab("sitemap")}>
+            1. Check Sitemap
+          </TabsTrigger>
+          <TabsTrigger
+            value="base-url"
+            onClick={() => setCurrentTab("base-url")}
+          >
+            2. Enter base URL
+          </TabsTrigger>
+          <TabsTrigger value="paths" onClick={() => setCurrentTab("paths")}>
+            3. Paths ({paths.length})
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="sitemap">
           <label htmlFor="siteMapUrl">
@@ -152,8 +163,18 @@ export default function CheckLinks() {
               onChange={(e) => setBaseUrl(e.currentTarget.value)}
             />
           </label>
+          <Button className="mt-4 block" onClick={() => setCurrentTab("paths")}>
+            Go to path Tab
+          </Button>
         </TabsContent>
         <TabsContent value="paths">
+          <Button className="mb-4 block" onClick={checkPaths}>
+            {allChecking ? (
+              <FiLoader className="animate-spin" />
+            ) : (
+              "Check all paths"
+            )}
+          </Button>
           {paths.map((path) => (
             <PathInput
               key={path.id}
@@ -166,9 +187,6 @@ export default function CheckLinks() {
           ))}
           <Button className="mt-4 block" onClick={addPath}>
             Add Path
-          </Button>
-          <Button className="mt-4 block" onClick={checkPaths}>
-            {allChecking ? <FiLoader className="animate-spin" /> : "Check all"}
           </Button>
         </TabsContent>
       </Tabs>
