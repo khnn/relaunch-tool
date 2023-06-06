@@ -18,6 +18,7 @@ Focus of this tool is a collection of helpful tools to relaunch a website. All t
 - Techstack finder: Helps to choose a techstack by answering a simple questionnaire
 
 ### Ideas
+- Save Infos (account, local storage or cookie)
 - Checklists and collections of practical external tools, documenation and content 
 - Link checker: Create a link mind map by entering the home page and automatic crawling of all a tags
 - Path list with simple info on status and note for new sites
@@ -31,6 +32,4 @@ Focus of this tool is a collection of helpful tools to relaunch a website. All t
 - Check child XML files
 - Caching
 - validate Base URL + Sitemap URL
-- TLD
-- Save Infos (account, local storage or cookie)
-
+- TLD for project
