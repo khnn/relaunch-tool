@@ -44,12 +44,12 @@ export default function RootLayout({
                 >
                   Path checker
                 </Link>
-                <Link
+                {/* <Link
                   className="text-foreground/60 transition-colors hover:text-foreground/80"
                   href="/techstack-finder"
                 >
                   Techstack finder
-                </Link>
+                </Link> */}
               </nav>
             </div>
           </div>
