@@ -1,9 +1,9 @@
-import CheckLinks from "@/components/CheckLinks"
+import Questionnaire from "@/components/Questionnaire"
 
 export default function Home() {
   return (
     <main className="container mt-20">
-      <CheckLinks />
+      <Questionnaire />
     </main>
   )
 }

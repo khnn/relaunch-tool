@@ -118,7 +118,7 @@ export default function CheckLinks() {
             2. Enter base URL
           </TabsTrigger>
           <TabsTrigger value="paths" onClick={() => setCurrentTab("paths")}>
-            3. Paths ({paths.length})
+            3. Paths ({paths.length - 1})
           </TabsTrigger>
         </TabsList>
         <TabsContent value="sitemap">
