@@ -13,6 +13,7 @@ export default function Questionnaire() {
     codeKnowledge?: [number]
     contentChanges?: [number]
     focus?: "performance" | "budget" | "flexibility"
+    limitations?: string
   }>({
     codeKnowledge: undefined,
     contentChanges: undefined,
@@ -133,7 +134,12 @@ export default function Questionnaire() {
                   key={focus}
                   variant={answers.focus === focus ? undefined : "secondary"}
                   onClick={() => {
-                    setAnswers({ ...answers, focus })
+                    if (
+                      focus === "performance" ||
+                      focus === "budget" ||
+                      focus === "flexibility"
+                    )
+                      setAnswers({ ...answers, focus })
                   }}
                 >
                   {focus.charAt(0).toUpperCase() + focus.slice(1)}
