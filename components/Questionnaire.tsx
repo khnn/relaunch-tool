@@ -13,12 +13,10 @@ export default function Questionnaire() {
     codeKnowledge?: [number]
     contentChanges?: [number]
     focus?: "performance" | "budget" | "flexibility"
-    limitations: string
   }>({
     codeKnowledge: undefined,
     contentChanges: undefined,
     focus: undefined,
-    limitations: "",
   })
 
   const currentProgress = () => {
@@ -26,12 +24,14 @@ export default function Questionnaire() {
     return (
       (answers.codeKnowledge ? 100 / length : 0) +
       (answers.contentChanges ? 100 / length : 0) +
-      (answers.focus ? 100 / length : 0) +
-      (answers.limitations !== "" ? 100 / length : 0)
+      (answers.focus ? 100 / length : 0)
     )
   }
 
   /* TODO
+
+  - What size is the project? This is important to put the other answers in perspective.
+  - Add limitations > Hosting, Security, ... This requires another interpretation of the answers.
 
   - DB?
   - Hosting?
@@ -52,7 +52,7 @@ export default function Questionnaire() {
         solution for SEO, ...
       </p>
       <div>
-        <Tabs defaultValue="kwowledge">
+        <Tabs defaultValue="knowhow">
           <TabsList>
             <TabsTrigger value="knowhow">Coding knowhow</TabsTrigger>
             <TabsTrigger value="content">Content changes</TabsTrigger>
@@ -123,6 +123,9 @@ export default function Questionnaire() {
           <TabsContent value="focus" className="rounded-lg border-2 p-4">
             <p className="mb-4 text-xl font-bold text-gray-500">
               Pick the most important aspect for you.
+            </p>
+            <p className="my-4 text-sm text-gray-300">
+              This is important to balance out the first two aspects.
             </p>
             <div className="flex gap-2">
               {["performance", "budget", "flexibility"].map((focus) => (
