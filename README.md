@@ -16,8 +16,13 @@ Focus of this tool is a collection of helpful tools to relaunch a website. All t
 
 ## Currently WIP
 - Techstack finder: Helps to choose a techstack by answering a simple questionnaire
+- WP to MDX: Converts WP blog posts with a given WP API endpoint
 
 ### Ideas
+- WP to MDX
+    - Query multiple posts with one /posts endpoint
+    - Add frontmatter: Title, Excerpt, Author, Date, Categories, Tags, Thumbnail
+    - Download as file or copy as text
 - Save Infos (account, local storage or cookie)
 - Checklists and collections of practical external tools, documenation and content 
 - Link checker: Create a link mind map by entering the home page and automatic crawling of all a tags
